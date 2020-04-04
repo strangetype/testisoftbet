@@ -4,7 +4,9 @@ import { FULL_DESTROY } from '../constants';
 
 import * as highlightShader from '../shaders/highlight.txt';
 
-const highlightFilter = new Filter(undefined, highlightShader.default);
+const highlightFilter = new Filter(undefined, highlightShader.default, {
+    smooth: 0
+});
 
 export default class Shape extends Sprite {
 
@@ -29,6 +31,7 @@ export default class Shape extends Sprite {
     }
 
     private highlight() {
+        highlightFilter.uniforms.smooth = 0;
         this.filters = [highlightFilter];
     }
 
@@ -62,6 +65,7 @@ export default class Shape extends Sprite {
     }
 
     update() {
+        if (this.filters && this.filters.length && highlightFilter.uniforms.smooth < 1) highlightFilter.uniforms.smooth += .1;
         this.y += this.app.gravity;
         if ((this.y < -this.ySize) || (this.y>this.app.renderer.height + this.ySize)) this.destroy();
     }

@@ -1,29 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const JavaScriptObfuscator = require('webpack-obfuscator');
-
-const plugins = {
-	prod: [
-		new UglifyJSPlugin({
-			sourceMap: true,
-			uglifyOptions: {
-				ecma: 8,
-				toplevel: true,
-				compress: {
-					passes: 2,
-					hoist_props: true,
-					ecma: 8
-				},
-				output: {
-					comments: false
-				}
-			}
-		}),
-	],
-	dev: []
-};
 
 const defaultConfig = {
 	entry: {
@@ -82,16 +61,19 @@ const defaultConfig = {
 
 const config = {
 	dev: Object.assign({}, defaultConfig, {
-		plugins: plugins.dev,
 		optimization: {
 			minimize: false
 		}
 	}),
 	prod: Object.assign({}, defaultConfig, {
-		plugins: plugins.prod,
+		optimization: {
+			minimize: true,
+			minimizer: [new TerserPlugin()],
+		},
 	})
 };
 
 module.exports = env => {
+	console.log('ENV: ', env);
 	return config[env || 'dev'];
 };
