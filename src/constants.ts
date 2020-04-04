@@ -1,0 +1,1 @@
+export const FULL_DESTROY = { texture: true, baseTexture: true,  children: true };

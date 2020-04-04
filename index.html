@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>isoftbet test task. Ostapov Maxim</title>
+
+
+    <script src="dist/app.min.js" async ></script>
+
+</head>
+<body style="visibility: hidden">
+    <canvas id="app"></canvas>
+    <div class="top-info" >
+        <div>
+            <span>shapes count:</span>
+            <span id="shapesCount"></span>
+        </div>
+        <div>
+            <span>the surface area occupied by the shapes: </span>
+            <span id="squareValue" >0</span>
+            <span>px^2</span>
+        </div>
+    </div>
+    <div class="bottom-controls">
+        <span>Gravity: </span>
+        <button id="gravityDecrease" >-</button>
+        <span id="gravity" >1</span>
+        <button id="gravityIncrease" >+</button>
+    </div>
+    <div class="bottom-controls bottom-controls--right">
+        <span>Shapes Birth Frequency: </span>
+        <button id="birthFrequencyDecrease" >-</button>
+        <span id="birthFrequency" >1</span>
+        <button id="birthFrequencyIncrease" >+</button>
+    </div>
+</body>
+</html>

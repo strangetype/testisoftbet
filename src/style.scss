@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: monospace, Calibri, Arial;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+}
+
+.top-info {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  padding: .5em 1em;
+  min-width: 512px;
+}
+
+.bottom-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  padding: .5em 1em;
+  min-width: 256px;
+  button {
+    padding: 0.5em 1em;
+  }
+
+  &.bottom-controls--right {
+    right: 0;
+    left: auto;
+  }
+
+}
